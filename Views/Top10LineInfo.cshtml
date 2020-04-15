@@ -1,0 +1,57 @@
+@page
+@model Top10LineInfoModel
+@{
+  ViewData["Title"] = "Top 10 Line Information";
+}
+
+<h2>Top 10 Information</h2>  
+
+<br />
+Your search string: "@Model.Input"
+<br />
+# of stations found: @Model.Top10LineList.Count
+<br />
+<br />
+@{
+   if (@Model.EX != null)
+	 {
+		 <h3>**ERROR: @Model.EX.Message</h3>
+		 <br />
+		 <hr />
+		 <br />
+		 <br />
+	 }
+}
+
+<table class="table">  
+    <thead>  
+        <tr>   
+            <th>  
+                ID
+            </th>  
+		  <th>  
+                Name
+            </th>  
+            <th>  
+                Number of Riders
+            </th> 
+        </tr>  
+    </thead>  
+    <tbody>  
+        @foreach (var item in Model.Top10LineList)  
+        {  
+            <tr>  
+                <td>  
+				@item.StationID
+                </td>  
+                <td>  
+                    @item.StationName
+                </td> 
+                <td>  
+                    @item.NumRiders
+                </td> 
+            </tr>  
+        }  
+    </tbody>  
+</table> 
+
